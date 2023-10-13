@@ -15,7 +15,7 @@ assets:
   repository:
     type: "blob.asset"
     data:
-      url: "https://github.com/klutchell/balena-homeassistant"
+      url: "https://github.com/PierrickGT/balena-homeassistant.git"
   logo:
     type: "blob.asset"
     data:
