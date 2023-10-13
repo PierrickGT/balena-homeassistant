@@ -1,6 +1,20 @@
 version: "2.1"
 
 services:
+  adguard:
+    image: adguard/adguardhome:latest
+    network_mode: host
+    privileged: true
+    volumes:
+      - "adguardhome_work:/opt/adguardhome/work:rw"
+      - "adguardhome_conf:/opt/adguardhome/conf:rw"
+    command:
+      - "--no-check-update"
+      - "--web-addr"
+      - "0.0.0.0:80"
+      - "--config"
+      - "/opt/adguardhome/conf/AdGuardHome.yaml"
+
   # https://hub.docker.com/r/homeassistant/home-assistant
   homeassistant:
     image: homeassistant/home-assistant:2025.11.3@sha256:f971850a6ec1fb5c5fd4e1748058e9e1f589aaf0da933b8d88bb5dee03f5b5e8
@@ -175,6 +189,8 @@ services:
       - "3000:3000" # port for Z-Wave JS websocket server
 
 volumes:
+  adguardhome_work: {}
+  adguardhome_conf: {}
   config: {}
   # influxdb: {}
   # grafana: {}
