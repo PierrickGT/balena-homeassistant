@@ -6,7 +6,7 @@
 
 You can one-click-deploy this project to balena using the button below:
 
-[![deploy with balena](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/klutchell/balena-homeassistant)
+[![deploy with balena](https://balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/PierrickGT/balena-homeassistant.git)
 
 ## Manual Deployment
 
