@@ -153,7 +153,7 @@ services:
 
   # https://github.com/klutchell/balena-tailscale
   tailscale:
-    build: tailscale
+    image: bh.cr/klutchell_blocks/tailscale-aarch64
     network_mode: host
     restart: on-failure
     volumes:
@@ -169,7 +169,7 @@ services:
       - /var/run/
     environment:
       TS_EXTRA_ARGS: --reset
-      REQUIRE_AUTH_KEY: "true"
+      REQUIRE_AUTH_KEY: true
 
   netdata:
     image: netdata/netdata:v1.42.4@sha256:a563b84149a246f2d0b6ce99e22f7410dc5c73356c4a9ee9ef1d704282abde91
