@@ -152,8 +152,9 @@ services:
   # https://github.com/klutchell/balena-tailscale
   tailscale:
     build: tailscale
-    restart: on-failure
+    image: bh.cr/klutchell_blocks/tailscale-aarch64
     network_mode: host
+    restart: on-failure
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
@@ -162,6 +163,23 @@ services:
     tmpfs:
       - /tmp
       - /var/run/
+    environment:
+      TS_EXTRA_ARGS: --reset
+      REQUIRE_AUTH_KEY: true
+
+  netdata:
+    image: netdata/netdata:v1.42.4@sha256:a563b84149a246f2d0b6ce99e22f7410dc5c73356c4a9ee9ef1d704282abde91
+    privileged: true
+    network_mode: host
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    labels:
+      io.balena.features.balena-socket: 1
+      io.balena.features.procfs: 1
+      io.balena.features.supervisor-api: 1
+      io.balena.features.sysfs: 1
     volumes:
       - tailscale:/var/lib/tailscale
 
