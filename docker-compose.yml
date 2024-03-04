@@ -185,7 +185,7 @@ services:
 
   zwave-js-ui:
     container_name: zwave-js-ui
-    image: zwavejs/zwave-js-ui:latest@sha256:bfb8bdc0a5016ccca68843898bf01399d68ede897712f3bacad3c844808f99d6
+    image: zwavejs/zwave-js-ui:latest@sha256:ce5278bd998ad8ea2422a6f6c2ec606fcde0d065f6c8e2ae5300a196b4fcf1bb
     network_mode: host
     restart: always
     tty: true
