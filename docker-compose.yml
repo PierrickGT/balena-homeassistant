@@ -2,7 +2,7 @@ version: "2.1"
 
 services:
   adguard:
-    image: adguard/adguardhome:latest@sha256:4483861963bd1aeb3e6661e4da5b14402c659b43d207cf59fa0962d75ce496cb
+    image: adguard/adguardhome:latest@sha256:f890b77505e410e295cc96830632b46075d7263cef52c158f9331348c98e1228
     network_mode: host
     privileged: true
     volumes:
