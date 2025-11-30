@@ -2,7 +2,7 @@ version: "2.1"
 
 services:
   adguard:
-    image: adguard/adguardhome:latest@sha256:c64a0b37f7b9f7e065089f34686c1232a4dd5401a199a1b20b074d90b955eebd
+    image: adguard/adguardhome:latest
     network_mode: host
     privileged: true
     volumes:
@@ -17,7 +17,7 @@ services:
 
   # https://hub.docker.com/r/homeassistant/home-assistant
   homeassistant:
-    image: homeassistant/home-assistant:2025.11.3@sha256:f971850a6ec1fb5c5fd4e1748058e9e1f589aaf0da933b8d88bb5dee03f5b5e8
+    image: homeassistant/home-assistant:latest
     network_mode: host
     volumes:
       - config:/config
@@ -38,7 +38,7 @@ services:
 
   # https://github.com/home-assistant-libs/python-matter-server/blob/main/docs/docker.md
   matter-server:
-    image: ghcr.io/home-assistant-libs/python-matter-server:8.1.0@sha256:170aa093ce91c76cde4cc390918307590f0f5558fcec93f913af3cb019e6562a
+    image: ghcr.io/home-assistant-libs/python-matter-server:stable
     # Required for mDNS to work correctly
     network_mode: host
     security_opt:
@@ -68,7 +68,7 @@ services:
       REQUIRE_AUTH_KEY: true
 
   netdata:
-    image: netdata/netdata:v1.47.5@sha256:678b93208cd488f33b6539b56cb3c324e533daf59652f72f06d0e4abafbf6e14
+    image: netdata/netdata:latest
     privileged: true
     network_mode: host
     cap_add:
@@ -85,7 +85,7 @@ services:
 
   zwave-js-ui:
     container_name: zwave-js-ui
-    image: zwavejs/zwave-js-ui:latest@sha256:69966e5a4bf1a6c52cb8b1c15037471a47cd07ae4fcdf24bf807019bba9ce2ee
+    image: zwavejs/zwave-js-ui:latest
     network_mode: host
     restart: always
     tty: true
