@@ -27,66 +27,6 @@ services:
       DBUS_SYSTEM_BUS_ADDRESS: unix:path=/host/run/dbus/system_bus_socket
     privileged: true
 
-  # https://hub.docker.com/_/eclipse-mosquitto
-  mqtt:
-    build: mqtt
-    ports:
-      - 1883:1883
-    volumes:
-      - mqtt:/mosquitto/data
-    tmpfs:
-      - /mosquitto/log
-
-  # https://esphome.io/guides/getting_started_command_line.html#installation
-  esphome:
-    image: ghcr.io/esphome/esphome:2025.11.0@sha256:29f3391ffb0a4eeabeee48908f0ba273937b121377b1a526dbe9065e02a2ecec
-    volumes:
-      - esphome:/config
-    privileged: true
-    network_mode: host
-
-  # https://www.zigbee2mqtt.io/guide/getting-started/#installation
-  # zigbee2mqtt:
-  #   build: zigbee2mqtt
-  #   restart: no
-  #   volumes:
-  #     - zigbee2mqtt:/app/data
-  #   ports:
-  #     - 7000:7000
-  #   privileged: true
-
-  # https://hub.docker.com/r/codercom/code-server
-  # code-server:
-  #   image: codercom/code-server:4.17.1@sha256:69f3b3952cd7a9680c290cf2c8030888064c759b7b599505eda5b52bdd841e74
-  #   command:
-  #     - --port=9000
-  #     - --auth=none
-  #     - --extensions-dir=/config/.vscode
-  #     - --user-data-dir=/config/.vscode
-  #     - /config
-  #   working_dir: /config
-  #   ports:
-  #     - 9000:9000/tcp
-  #   volumes:
-  #     - config:/config
-  #   user: root
-
-  # https://hub.docker.com/_/influxdb
-  # influxdb:
-  #   image: influxdb:1.8.10@sha256:8229301186573a2e4923fad6e347f7f86b430fe311fdbd6b80e0f45d5a2a78ed
-  #   volumes:
-  #     - influxdb:/var/lib/influxdb
-  #   ports:
-  #     - 8086:8086
-
-  # https://hub.docker.com/r/grafana/grafana
-  # grafana:
-  #   image: grafana/grafana:10.1.4@sha256:29f39e23705d3ef653fa84ca3c01731e0771f1fedbd69ecb99868270cdeb0572
-  #   volumes:
-  #     - grafana:/var/lib/grafana
-  #   ports:
-  #     - 3000:3000/tcp
-
   # https://github.com/balenablocks/hostname
   hostname:
     build: hostname
@@ -105,49 +45,9 @@ services:
       # Required for Bluetooth via D-Bus
       - apparmor:unconfined
     volumes:
-      - duplicati:/config
       - config:/volumes/config
-      # - influxdb:/volumes/influxdb
-      # - grafana:/volumes/grafana
-      # - zigbee2mqtt:/volumes/zigbee2mqtt
-      # - frigate-media:/volumes/frigate-media
       - tailscale:/volumes/tailscale
       - netdatalib:/volumes/netdatalib
-      - esphome:/volumes/esphome
-
-  # https://blakeblackshear.github.io/frigate/installation
-  # frigate:
-  #   image: ghcr.io/blakeblackshear/frigate:0.12.1@sha256:bb7f7e76a13eccef0b12704e5851cc774a12af1f12df387d6a70a796a3e938c3
-  #   privileged: true
-  #   ports:
-  #     - "5000:5000"
-  #     - "1935:1935" # RTMP feeds
-  #   volumes:
-  #     - config:/config
-  #     - frigate-media:/media/frigate
-  #   tmpfs:
-  #     - /tmp/cache
-  #   shm_size: 2048M
-  #   environment:
-  #     FRIGATE_RTSP_PASSWORD: "balena"
-  #     CONFIG_FILE: "/config/frigate.yml"
-  #   labels:
-  #     io.balena.features.kernel-modules: 1
-  #   devices:
-  #     - /dev/dri:/dev/dri
-
-  # https://hub.docker.com/r/mrlt8/wyze-bridge/tags
-  # wyze-bridge:
-  #   image: mrlt8/wyze-bridge:2.4.0@sha256:5b28c565ab4697dfff117888678b18a445dc57d145ff643217c167a195de9c38
-  #   ports:
-  #     # - 1935:1935 # RTMP
-  #     # - 8554:8554 # RTSP
-  #     # - 8888:8888 # HLS
-  #     # - 8889:8889 # WebRTC
-  #     # - 8189:8189/udp # WebRTC/ICE
-  #     - 5001:5000 # WEB-UI
-  #   volumes:
-  #     - wyze-tokens:/tokens
 
   # https://github.com/klutchell/balena-tailscale
   tailscale:
@@ -210,13 +110,6 @@ volumes:
   adguardhome_work: {}
   adguardhome_conf: {}
   config: {}
-  # influxdb: {}
-  # grafana: {}
-  mqtt: {}
-  # zigbee2mqtt: {}
-  duplicati: {}
-  # frigate-media: {}
-  # wyze-tokens: {}
+  netdatalib: {}
   tailscale: {}
-  esphome: {}
   zwave-config: {}
