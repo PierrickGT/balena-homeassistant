@@ -36,19 +36,6 @@ services:
     environment:
       SET_HOSTNAME: homeassistant
 
-  # https://github.com/home-assistant-libs/python-matter-server/blob/main/docs/docker.md
-  matter-server:
-    image: ghcr.io/home-assistant-libs/python-matter-server:stable
-    # Required for mDNS to work correctly
-    network_mode: host
-    security_opt:
-      # Required for Bluetooth via D-Bus
-      - apparmor:unconfined
-    volumes:
-      - config:/volumes/config
-      - tailscale:/volumes/tailscale
-      - netdatalib:/volumes/netdatalib
-
   # https://github.com/klutchell/balena-tailscale
   tailscale:
     build: tailscale
