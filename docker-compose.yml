@@ -2,7 +2,7 @@ version: "2.1"
 
 services:
   adguard:
-    image: adguard/adguardhome:latest@sha256:f29c58a91f79387cbbbb042e140814f58e830d457d44af03d662c8df43db9dea
+    image: adguard/adguardhome:latest@sha256:7157eb1dc3b26c7af1d6898759a7b3f7d0fa09891fbd2d3caa6abc1057a9179b
     network_mode: host
     privileged: true
     volumes:
@@ -43,7 +43,7 @@ services:
       REQUIRE_AUTH_KEY: true
 
   netdata:
-    image: netdata/netdata:latest@sha256:837a83845d35f30ef64e117813602cc8d9686bec335cf7e2ffeed284c70df45b
+    image: netdata/netdata:latest@sha256:67c328880a6be20979b2e96b52aea611c55a1f9fb8d5237a9ceb017be9d51444
     privileged: true
     network_mode: host
     cap_add:
