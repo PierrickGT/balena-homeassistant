@@ -43,7 +43,7 @@ services:
       REQUIRE_AUTH_KEY: true
 
   netdata:
-    image: netdata/netdata:latest@sha256:aded203425e3bb30eafaca951be52f923c4689efc01bcf2cb64d84681d46dc82
+    image: netdata/netdata:latest@sha256:689be29e4f334233d091a0d2c3402ae8347527a8cd6999ad75fd16989099a115
     privileged: true
     network_mode: host
     cap_add:
